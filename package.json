@@ -1,0 +1,14 @@
+{
+  "name": "cypress-e2e-testing",
+  "version": "1.0.0",
+  "description": "End-to-End Testing with Cypress - Semester Project",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:task1": "cypress run --spec 'cypress/e2e/task1/**/*.cy.js'",
+    "cy:run:task2": "cypress run --spec 'cypress/e2e/task2/**/*.cy.js'"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}
