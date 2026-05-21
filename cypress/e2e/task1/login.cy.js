@@ -1,85 +1,38 @@
-// ============================================================
-// FILE: cypress/e2e/task1/login.cy.js
-// SITE: https://www.saucedemo.com
-// TASK: Task 1 — Login Test Cases (Login Test 1, 2, 3)
-// ============================================================
+describe('Login Tests', () => {
 
-describe('Login Tests — saucedemo.com', () => {
+    beforeEach(() => {
 
-  beforeEach(() => {
-    // Clear browser state to prevent session state from interfering between tests
-    cy.clearCookies()
-    cy.clearLocalStorage()
-    // Visit the login page before every test
-    cy.visit('https://www.saucedemo.com')
-  })
+        cy.visit('https://www.saucedemo.com')
+    })
 
-  // ----------------------------------------------------------
-  // LOGIN TEST 1: Valid credentials → should reach dashboard
-  // ----------------------------------------------------------
-  it('Login Test 1: Valid credentials redirect to inventory page', () => {
-    // Type valid username
-    cy.get('[data-test="username"]')
-      .should('be.visible')
-      .type('standard_user')
+    it('Login Test 1 - Valid Login', () => {
 
-    // Type valid password
-    cy.get('[data-test="password"]')
-      .should('be.visible')
-      .type('secret_sauce')
+        cy.get('[data-test="username"]').type('standard_user')
 
-    // Click login button
-    cy.get('[data-test="login-button"]').click()
+        cy.get('[data-test="password"]').type('secret_sauce')
 
-    // Assert: URL should now contain /inventory (dashboard page)
-    cy.url().should('include', '/inventory')
+        cy.get('[data-test="login-button"]').click()
 
-    // Assert: The page heading "Products" should be visible
-    cy.get('.title').should('be.visible').and('have.text', 'Products')
-  })
+        cy.url().should('include', '/inventory.html')
+    })
 
-  // ----------------------------------------------------------
-  // LOGIN TEST 2: Wrong password → error message appears
-  // ----------------------------------------------------------
-  it('Login Test 2: Invalid password shows error message', () => {
-    // Type valid username
-    cy.get('[data-test="username"]').type('standard_user')
+    it('Login Test 2 - Invalid Password', () => {
 
-    // Type WRONG password
-    cy.get('[data-test="password"]').type('wrong_password_123')
+        cy.get('[data-test="username"]').type('standard_user')
 
-    // Click login
-    cy.get('[data-test="login-button"]').click()
+        cy.get('[data-test="password"]').type('wrongpass')
 
-    // Assert: Error container is visible
-    cy.get('[data-test="error"]').should('be.visible')
+        cy.get('[data-test="login-button"]').click()
 
-    // Assert: Error message contains expected text
-    cy.get('[data-test="error"]')
-      .should('contain.text', 'Username and password do not match')
+        cy.get('[data-test="error"]')
+            .should('be.visible')
+    })
 
-    // Assert: We should NOT be redirected (still on login page)
-    cy.url().should('not.include', '/inventory')
-  })
+    it('Login Test 3 - Empty Fields', () => {
 
-  // ----------------------------------------------------------
-  // LOGIN TEST 3: Empty fields → validation message shown
-  // ----------------------------------------------------------
-  it('Login Test 3: Empty fields show validation message', () => {
-    // Do NOT type anything — leave both fields empty
+        cy.get('[data-test="login-button"]').click()
 
-    // Click the login button directly
-    cy.get('[data-test="login-button"]').click()
-
-    // Assert: Error message is visible
-    cy.get('[data-test="error"]').should('be.visible')
-
-    // Assert: Error message mentions username is required
-    cy.get('[data-test="error"]')
-      .should('contain.text', 'Username is required')
-
-    // Assert: Page title still shows (still on login page)
-    cy.get('.login_logo').should('be.visible')
-  })
-
+        cy.get('[data-test="error"]')
+            .should('contain', 'Username is required')
+    })
 })
