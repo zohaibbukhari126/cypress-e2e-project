@@ -1,14 +1,16 @@
 {
   "name": "cypress-e2e-testing",
   "version": "1.0.0",
-  "description": "End-to-End Testing with Cypress - Semester Project",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:run:task1": "cypress run --spec 'cypress/e2e/task1/**/*.cy.js'",
-    "cy:run:task2": "cypress run --spec 'cypress/e2e/task2/**/*.cy.js'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "cypress": "^13.17.0"
+    "cypress": "^15.15.0"
   }
 }
