@@ -8,6 +8,7 @@ module.exports = defineConfig({
     video: false,
     screenshotOnRunFailure: true,
     defaultCommandTimeout: 10000,
+    pageLoadTimeout: 120000, // Increase from default 60000ms to 120000ms (2 minutes)
     setupNodeEvents(on, config) {},
   },
 })
