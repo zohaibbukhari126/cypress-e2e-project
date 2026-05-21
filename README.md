@@ -1,8 +1,8 @@
 # Cypress E2E Testing — Semester Project
 
-**Student:** [Your Name]  
-**Student ID:** [Your ID]  
-**Date:** [Submission Date]  
+**Student:** Muhammad Zohaib Abbas  
+**Student ID:** FA22-BSE-200
+**Date:** 21-05-2026
 **Website Under Test:** [https://www.saucedemo.com](https://www.saucedemo.com)
 
 ---
