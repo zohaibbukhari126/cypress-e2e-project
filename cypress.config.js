@@ -1,14 +1,11 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  allowCypressEnv: false,
+
   e2e: {
-    baseUrl: 'https://www.saucedemo.com',
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    video: false,
-    screenshotOnRunFailure: true,
-    defaultCommandTimeout: 10000,
-    pageLoadTimeout: 120000, // Increase from default 60000ms to 120000ms (2 minutes)
-    setupNodeEvents(on, config) {},
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
   },
-})
+});
