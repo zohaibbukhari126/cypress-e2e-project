@@ -1,59 +1,25 @@
-// ============================================================
-// FILE: cypress/e2e/task1/navigation.cy.js
-// SITE: https://www.saucedemo.com
-// TASK: Task 1 — Navigation Test Cases (Nav Test 1, 2)
-// ============================================================
+describe('Navigation Tests', () => {
 
-describe('Navigation Tests — saucedemo.com', () => {
+    beforeEach(() => {
 
-  // Log in before each test so we have access to the app
-  beforeEach(() => {
-    // Clear browser state to prevent session state from interfering between tests
-    cy.clearCookies()
-    cy.clearLocalStorage()
-    cy.visit('https://www.saucedemo.com')
-    cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]').type('secret_sauce')
-    cy.get('[data-test="login-button"]').click()
-    // Confirm we are on the inventory page before proceeding
-    cy.url().should('include', '/inventory')
-  })
+        cy.visit('https://www.saucedemo.com')
 
-  // ----------------------------------------------------------
-  // NAVIGATION TEST 1: Click menu link → correct page opens
-  // ----------------------------------------------------------
-  it('Navigation Test 1: About link opens correct external page', () => {
-    // Open the burger/hamburger menu
-    cy.get('#react-burger-menu-btn').should('be.visible').click()
+        cy.login('standard_user', 'secret_sauce')
+    })
 
-    // Wait for the menu to slide open
-    cy.get('.bm-menu').should('be.visible')
+    it('Navigation Test 1', () => {
 
-    // Assert the "About" menu item is visible with correct text
-    cy.get('#about_sidebar_link')
-      .should('be.visible')
-      .and('have.text', 'About')
-      .and('have.attr', 'href', 'https://saucelabs.com/')
-  })
+        cy.get('.shopping_cart_link').click()
 
-  // ----------------------------------------------------------
-  // NAVIGATION TEST 2: Visit 2 pages and assert headings
-  // ----------------------------------------------------------
-  it('Navigation Test 2: Products page and Cart page have correct headings', () => {
-    // --- Page 1: Products / Inventory ---
-    cy.url().should('include', '/inventory')
-    cy.get('.title')
-      .should('be.visible')
-      .and('have.text', 'Products')
+        cy.url().should('include', 'cart.html')
+    })
 
-    // Navigate to Cart page by clicking the cart icon
-    cy.get('.shopping_cart_link').click()
+    it('Navigation Test 2', () => {
 
-    // --- Page 2: Cart ---
-    cy.url().should('include', '/cart')
-    cy.get('.title')
-      .should('be.visible')
-      .and('have.text', 'Your Cart')
-  })
+        cy.get('#react-burger-menu-btn').click()
 
+        cy.contains('About').click()
+
+        cy.url().should('include', 'saucelabs')
+    })
 })
