@@ -144,9 +144,7 @@ cy.addItemToCart('sauce-labs-backpack')
 
 ---
 
-## Screenshot
 
-*(Add your screenshot of passing tests here after running)*
 
 ```bash
 npm run cy:run
