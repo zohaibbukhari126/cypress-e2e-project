@@ -10,6 +10,9 @@ describe('Task 2 — Custom Commands', () => {
   // beforeEach HOOK — visit login page before each test
   // ----------------------------------------------------------
   beforeEach(() => {
+    // Clear browser state to prevent session state from interfering between tests
+    cy.clearCookies()
+    cy.clearLocalStorage()
     cy.visit('https://www.saucedemo.com')
   })
 

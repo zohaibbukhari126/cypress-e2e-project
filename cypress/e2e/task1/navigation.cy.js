@@ -8,6 +8,9 @@ describe('Navigation Tests — saucedemo.com', () => {
 
   // Log in before each test so we have access to the app
   beforeEach(() => {
+    // Clear browser state to prevent session state from interfering between tests
+    cy.clearCookies()
+    cy.clearLocalStorage()
     cy.visit('https://www.saucedemo.com')
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')

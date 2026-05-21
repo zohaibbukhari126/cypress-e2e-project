@@ -7,6 +7,9 @@
 describe('Form Test — Checkout Form on saucedemo.com', () => {
 
   beforeEach(() => {
+    // Clear browser state to prevent session state from interfering between tests
+    cy.clearCookies()
+    cy.clearLocalStorage()
     // Login first
     cy.visit('https://www.saucedemo.com')
     cy.get('[data-test="username"]').type('standard_user')

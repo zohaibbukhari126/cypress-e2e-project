@@ -7,6 +7,9 @@
 describe('Login Tests — saucedemo.com', () => {
 
   beforeEach(() => {
+    // Clear browser state to prevent session state from interfering between tests
+    cy.clearCookies()
+    cy.clearLocalStorage()
     // Visit the login page before every test
     cy.visit('https://www.saucedemo.com')
   })

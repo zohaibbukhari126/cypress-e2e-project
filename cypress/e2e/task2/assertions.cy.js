@@ -12,6 +12,9 @@ describe('Task 2 — Assertions, Aliases & beforeEach Hook', () => {
   // so it is not repeated manually in each test
   // ----------------------------------------------------------
   beforeEach(() => {
+    // Clear browser state to prevent session state from interfering between tests
+    cy.clearCookies()
+    cy.clearLocalStorage()
     cy.visit('https://www.saucedemo.com')
   })
 
